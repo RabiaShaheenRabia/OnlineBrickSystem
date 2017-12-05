@@ -1,0 +1,46 @@
+group 'com.caci.onlinebricksystem'
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.9.RELEASE")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile("org.springframework.boot:spring-boot-starter-web")
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+    compile ('org.projectlombok:lombok:1.16.18')
+    compile('org.springframework.boot:spring-boot-starter-actuator')
+    //compile('org.springframework.boot:spring-boot-starter-data-jpa')
+    testCompile 'org.apache.httpcomponents:httpclient:4.5.3'
+    testCompile 'net.javacrumbs.json-unit:json-unit-fluent:1.19.0'
+    // https://mvnrepository.com/artifact/com.google.code.gson/gson
+    compile group: 'com.google.code.gson', name: 'gson', version: '2.7'
+
+}
+/*run {
+    args += ['java -cp OnlineBrickSystem.jar com.caci.onlinebricksystem.Application']
+}*/
+test {
+    testLogging {
+        // Show that tests are run in the command-line output
+        events 'started', 'passed'
+    }
+}
+
